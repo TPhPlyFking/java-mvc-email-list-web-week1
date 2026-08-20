@@ -17,20 +17,20 @@ public class EmailListServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
         String url = "/index.html";
 
-        // Lấy hành động hiện tại
         String action = request.getParameter("action");
         if (action == null) {
-            action = "join";  // hành động mặc định
+            action = "join";
         }
 
-        // Thực hiện nghiệp vụ dựa trên hành động
         if (action.equals("join")) {
             url = "/index.html";
         }
         else if (action.equals("add")) {
-            // Lấy dữ liệu người dùng nhập từ form
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
             String email = request.getParameter("email");
